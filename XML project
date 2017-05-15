@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
-<map proto ="1.4.3">
+<map proto ="1.4.2">
 <name>Three Choices</name>
-<version>1.0.0</name>
+<version>1.0.0</version>
 <objective>Choose where you spawn, and capture the wool in your team's base to win.</objective>
 
 <authors>
@@ -86,7 +86,7 @@
         <spawn team="blue-team" yaw="180"><cylinder base="0.5,65,-4.5" radius="2" height="0"/></spawn>
         <spawn team="red-team" yaw="0"><cylinder base="0.5,65,2" radius="2" height="0"/></spawn>
     </spawns>
-    <default yaw="270"><cylinder base="44.5,8,0.5" radius="2" height="0"/></default> 
+    <default yaw="90"><cylinder base="-0.5,56.5,-1" radius="2" height="0"/></default> 
 </spawns>
 
 <kits>
@@ -96,15 +96,15 @@
 
     <kit id="woolroomkit">
         <game-mode>survival</game-mode>
-        <item slot="0"              material ="iron sword"  />
-        <item slot="1"              material ="bow"         />
+        <item slot="0"              material ="iron sword" unbreakable="true"  />
+        <item slot="1"              material ="bow" unbreakable="true"         />
         <item slot="28" amount="16" material ="arrow"       />
-        <item slot="2"              material ="iron pickaxe"/>
-        <item slot="3"              material ="iron axe"    />
+        <item slot="2"              material ="iron pickaxe" unbreakable="true"/>
+        <item slot="3"              material ="iron axe"   unbreakable="true"  />
         <item slot="4"  amount="32" material ="bread"       />
         <item slot="6"  amount="2"  material ="wood"        />
         <potion duration="2" amplifier="1">heal</potion>
-        <potion duration="3">damage resistance</potion>
+        <potion duration="3">resistance</potion>
     </kit>
 
     <kit id="redteaminbluewoolroom" parents="woolroomkit">
@@ -121,16 +121,16 @@
 
     <kit id="defencekit">
         <game-mode>survival</game-mode>
-        <item slot="0"              material ="iron sword"  />
-        <item slot="1"              material ="bow"         />
+        <item slot="0"              material ="iron sword"   unbreakable="true"/>
+        <item slot="1"              material ="bow"       unbreakable="true"   />
         <item slot="28" amount="64" material ="arrow"       />
-        <item slot="2"              material ="iron pickaxe"/>
-        <item slot="3"              material ="iron axe"    />
+        <item slot="2"              material ="iron pickaxe" unbreakable="true"/>
+        <item slot="3"              material ="iron axe"    unbreakable="true" />
         <item slot="4"  amount="32" material ="bread"       />
         <item slot="6"  amount="64" material ="wood"        />
         <item slot="8"              material ="water bucket"/>
         <potion duration="2" amplifier="1">heal</potion>
-        <potion duration="5">damage resistance</potion>
+        <potion duration="5">resistance</potion>
     </kit>
 
     <kit id="redteamdefencekit" parents="defencekit">
@@ -148,13 +148,6 @@
     </kit>
 </kits>
 
-<toolrepair>
-    <tool>iron sword</tool>
-    <tool>iron pickaxe</tool>
-    <tool>iron axe</tool>
-    <tool>bow</tool>
-</toolrepair>
-
 <itemremove>
     <item>arrow</item>
     <item>leather helmet</item>
@@ -162,8 +155,7 @@
     <item>leather leggings</item>
     <item>leather boots</item>
     <item>wood</item>
-    <item>red wool</item>
-    <item>blue wool</item>
+    <item>wool</item>
     <item>bow</item>
     <item>iron sword</item>
 </itemremove>
@@ -191,6 +183,30 @@
 </portals>
 
 
+
+<regions>
+    <!--Map regions-->
+    <rectangle id="themap" min="15.5,14,83" max="-24.5,70,-90"/>
+    <rectangle id="bluewoolroom" min="-19,-72" max="-9,-81"/>
+    <rectangle id="pathtobluewoolroom" min="-16,-72" max="-12,-49"/>
+    <rectangle id="bluelane" min="-19,-49" max="-9,49"/>
+    <rectangle id="bluesupplies" min="-19,49" max="-9,79"/>
+
+    <rectangle id="midcrossing" min="-9,9" max="8,-11"/>
+
+    <rectangle id="redsupplies" min="8,-81" max="18,-51"/>
+    <rectangle id="redlane" min="8,-51" max="18,47"/>
+    <rectangle id="pathtoredwoolroom" min="11,47" max="15,70"/>
+    <rectangle id="redwoolroom" min="8,70" max="18,79"/>
+    <!--Portals-->
+    <cylinder id="portaltobluewool" base="1.5,65,6.5" radius=".5" height="1"/> 
+    <cylinder id="portaltoreddefences" base="-.5,65,6.5" radius=".5" height="1"/> 
+    <cylinder id="portaltoredsupplies" base="-2.5,65,6.5" radius=".5" height="1"/> 
+
+    <cylinder id="portaltoredwool" base="-2.5,65,-8.5" radius=".5" height="1"/> 
+    <cylinder id="portaltobluedefences" base="-.5.5,65,-8.5" radius=".5" height="1"/> 
+    <cylinder id="portaltobluesupplies" base="1.5,65,-8.5" radius=".5" height="1"/>
+    <!--Application-->
     <apply kit="redteaminbluewoolroom">
         <region name="portaltobluewool"/>
     </apply>
@@ -214,38 +230,13 @@
     <apply kit="blueteamdefencekit">
         <region name="portaltobluesupplies"/>
     </apply>
-
-
-
-
-<regions>
-    <rectangle id="themap" min="15.5,14,83" max="-24.5,70,-90"/>
-
-
-    <rectangle id="bluewoolroom" min="-19,-72" max="-9,-81"/>
-    <rectangle id="pathtobluewoolroom" min="-16,-72" max="-12,-49"/>
-    <rectangle id="bluelane" min="-19,-49" max="-9,49"/>
-    <rectangle id="bluesupplies" min="-19,49" max="-9,79"/>
-
-    <rectangle id="midcrossing" min="-9,9" max="8,-11"/>
-
-    <rectangle id="redsupplies" min="8,-81" max="18,-51"/>
-    <rectangle id="redlane" min="8,-51" max="18,47"/>
-    <rectangle id="pathtoredwoolroom" min="11,47" max="15,70"/>
-    <rectangle id="redwoolroom" min="8,70" max="18,79"/>
-
-    <cylinder id="portaltobluewool" base="1.5,65,6.5" radius=".5" height="1"/> 
-    <cylinder id="portaltoreddefences" base="-.5,65,6.5" radius=".5" height="1"/> 
-    <cylinder id="portaltoredsupplies" base="-2.5,65,6.5" radius=".5" height="1"/> 
-
-    <cylinder id="portaltoredwool" base="-2.5,65,-8.5" radius=".5" height="1"/> 
-    <cylinder id="portaltobluedefences" base="-.5.5,65,-8.5" radius=".5" height="1"/> 
-    <cylinder id="portaltobluesupplies" base="1.5,65,-8.5" radius=".5" height="1"/>
+    <apply enter="only-red" block-place="never" block-break="iron-only" region="redsupplies"/>
+    <apply enter="only-blue" block-break="iron-only" block-place="never" region="bluesupplies"/>
+    <apply region="bluewoolroom" block-place="never" block-break="never"/>
+    <apply region="redwoolroom" block-place="never" block-break="never"/>
 </regions>
 
 
-Things to still do
-Make wool unplacable
 Make region unbreakable except for iron
 
 <wools>
@@ -283,6 +274,10 @@ Make region unbreakable except for iron
             <team>red</team>
         </all>
     </not>
+    <all id="iron-only">
+        <material>iron block</material>
+    </all>
+    <deny id="no-wool"><material>wool</material></deny>
 </filters>
 
 
