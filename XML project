@@ -82,10 +82,8 @@
 </teams>
 
 <spawns>
-    <spawns kit="spawnkit">
-        <spawn team="blue-team" yaw="180"><cylinder base="0.5,65,-4.5" radius="2" height="0"/></spawn>
-        <spawn team="red-team" yaw="0"><cylinder base="0.5,65,2" radius="2" height="0"/></spawn>
-    </spawns>
+    <spawn team="blue-team" kit="spawnkit"><region yaw="180"><cylinder base="0.5,65,-4.5" radius="2" height="0"/><region/></spawn>
+    <spawn team="red-team" kit="spawnkit"><region yaw="0"><cylinder base="0.5,65,2" radius="2" height="0"/><region/></spawn>
     <default yaw="90"><cylinder base="-0.5,56.5,-1" radius="2" height="0"/></default> 
 </spawns>
 
@@ -110,13 +108,13 @@
     <kit id="redteaminbluewoolroom" parents="woolroomkit">
         <helmet         color="cd0000"  material="leather helmet"/>
         <chestplate     color="cd0000"  material="leather chestplate"/>
-        <item slot="5"  amount="1"      material ="blue wool"/>
+        <item slot="5"  amount="1" damage="11"    material ="wool"/>
     </kit>
 
     <kit id="blueteaminredwoolroom" parents="woolroomkit">
         <helmet         color="cd0066"  material="leather helmet"/>
         <chestplate     color="cd0066"  material="leather chestplate"/>
-        <item slot="5"  amount="1"      material ="blue wool"/>
+        <item slot="5"  amount="1" damage="14"     material="wool"/>
     </kit>
 
     <kit id="defencekit">
@@ -186,7 +184,7 @@
 
 <regions>
     <!--Map regions-->
-    <rectangle id="themap" min="15.5,14,83" max="-24.5,70,-90"/>
+    <cuboid id="themap" min="15.5,14,83" max="-24.5,70,-90"/>
     <rectangle id="bluewoolroom" min="-19,-72" max="-9,-81"/>
     <rectangle id="pathtobluewoolroom" min="-16,-72" max="-12,-49"/>
     <rectangle id="bluelane" min="-19,-49" max="-9,49"/>
@@ -204,7 +202,7 @@
     <cylinder id="portaltoredsupplies" base="-2.5,65,6.5" radius=".5" height="1"/> 
 
     <cylinder id="portaltoredwool" base="-2.5,65,-8.5" radius=".5" height="1"/> 
-    <cylinder id="portaltobluedefences" base="-.5.5,65,-8.5" radius=".5" height="1"/> 
+    <cylinder id="portaltobluedefences" base="-.5,65,-8.5" radius=".5" height="1"/> 
     <cylinder id="portaltobluesupplies" base="1.5,65,-8.5" radius=".5" height="1"/>
     <!--Application-->
     <apply kit="redteaminbluewoolroom">
@@ -234,22 +232,22 @@
     <apply enter="only-blue" block-break="iron-only" block-place="never" region="bluesupplies"/>
     <apply region="bluewoolroom" block-place="never" block-break="never"/>
     <apply region="redwoolroom" block-place="never" block-break="never"/>
+
 </regions>
 
 
 Make region unbreakable except for iron
 
 <wools>
-    <wool team="red-team" color="blue">
+    <wool team="red-team" color="blue" location="-13.835,22.94,-75.8">
         <monument><block>16.5,25,-61.5</block></monument>
     </wool>
-    <wool team="blue-team" color="red">
+    <wool team="blue-team" color="red" location="12.9,22,73">
         <monument><block>-17.5,25,59.5</block></monument>
     </wool>
 </wools>
 
 <filters>
-    <deny id=""><void/></deny>
 
     <team id="only-red">red-team</team>
     <team id="only-blue">blue-team</team>
@@ -261,7 +259,7 @@ Make region unbreakable except for iron
                 <material>workbench</material>
                 <material>trap door</material>
             </any>
-            <team>blue</team>
+            <team>blue-team</team>
         </all>
     </not>
     <not id="only-blue-usage">
@@ -271,7 +269,7 @@ Make region unbreakable except for iron
                 <material>workbench</material>
                 <material>trap door</material>
             </any>
-            <team>red</team>
+            <team>red-team</team>
         </all>
     </not>
     <all id="iron-only">
