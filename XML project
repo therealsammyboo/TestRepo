@@ -82,8 +82,8 @@
 </teams>
 
 <spawns>
-    <spawn team="blue-team" kit="spawnkit"><region yaw="180"><cylinder base="0.5,65,-4.5" radius="2" height="0"/><region/></spawn>
-    <spawn team="red-team" kit="spawnkit"><region yaw="0"><cylinder base="0.5,65,2" radius="2" height="0"/><region/></spawn>
+    <spawn team="blue-team" kit="spawnkit"><region yaw="180"><cylinder base="0.5,65,-4.5" radius="2" height="0"/></region></spawn>
+    <spawn team="red-team" kit="spawnkit"><region yaw="0"><cylinder base="0.5,65,2" radius="2" height="0"/></region></spawn>
     <default yaw="90"><cylinder base="-0.5,56.5,-1" radius="2" height="0"/></default> 
 </spawns>
 
