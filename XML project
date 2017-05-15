@@ -77,8 +77,8 @@
 </tutorial>
 
 <teams>
-    <team id="blue-team" color="blue" max="8">Blue Team</team>
-    <team id="red-team" color="dark red" max="8">Red Team</team>
+    <team id="blue-team" color="blue" max="8" max-overfill="12">Blue Team</team>
+    <team id="red-team" color="dark red" max="8" max-overfill="12">Red Team</team>
 </teams>
 
 <spawns>
